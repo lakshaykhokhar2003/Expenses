@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import {RouterProvider, createBrowserRouter, useNavigate} from 'react-router-dom';
+import ChallengesPage from './pages/ChallengeIndex';
+import GroupsPage from './pages/GroupIndex';
+import './index.css';
+import {useEffect} from "react";
+import Success from "./pages/Success";
+
+const router = createBrowserRouter([{
+    path: '/groups', children: [{
+        element: <GroupsPage/>, index: true
+    }, {
+        path: ':GroupId/challenges', element: <ChallengesPage/>
+    }]
+}, {
+    path: 'success', element: <Success/>
+}, {
+    path: 'failure', element: <h1>Payment Failed</h1>
+}, {
+    path: '*', element: <NotFound/>
+}]);
+
+function NotFound() {
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        navigate('/groups');
+    }, [navigate]);
+    return (<div>
+        <p>Page Not Found. Redirecting...</p>
+    </div>);
+}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return <RouterProvider router={router}/>;
 }
 
 export default App;

@@ -1,0 +1,19 @@
+.SuccessMain {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 80%;
+    max-width: 40rem;
+    margin: 10rem auto;
+    color: #fff;
+    background: #22323a;
+    padding: 2rem;
+}
+
+.SuccessMain h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: 1.5rem;
+    color: #84b0fc;
+}
+
