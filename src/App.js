@@ -1,4 +1,4 @@
-import {RouterProvider, createBrowserRouter, useNavigate} from 'react-router-dom';
+import {RouterProvider, createBrowserRouter, useNavigate, Link} from 'react-router-dom';
 import ChallengesPage from './pages/ChallengeIndex';
 import GroupsPage from './pages/GroupIndex';
 import './index.css';
@@ -14,7 +14,10 @@ const router = createBrowserRouter([{
 }, {
     path: 'success', element: <Success/>
 }, {
-    path: 'failure', element: <h1>Payment Failed</h1>
+    path: 'failure', element: <>
+        <h1>Payment Failed</h1>
+        <Link to='/groups'>Go back to all groups</Link>
+    </>
 }, {
     path: '*', element: <NotFound/>
 }]);
